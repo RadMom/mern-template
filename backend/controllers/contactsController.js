@@ -38,13 +38,13 @@ const getContact = (req, res) => {
     });
 };
 
-// Edit contact Ne Raboti!!!!
+// Edit contact 
 const editContact = (req, res) => {
   console.log(`Contact id: ${req.params.id}`);
   const id=req.params.id;
   Contact.findByIdAndUpdate(id,req.body)
   .then(result=>{
-    console.log(result,req.body);//result show old info, we pass the new one with req.body.
+    console.log(result);//result show old info, we pass the new one with req.body.
     //How to pass only the info I want to change???
     res.status(200).json(result);
   })

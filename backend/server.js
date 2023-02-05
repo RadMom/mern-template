@@ -1,19 +1,19 @@
 const express = require("express");
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleware/errorMiddleware");
 
 const phonebookRoutes = require("./routes/contactsRoutes");
 
-const port = 3000;
+const port = 5000;
 const URL = process.env.MONGO_URL;
 
 mongoose.set("strictQuery", false);
 mongoose
   .connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) =>
-    app.listen(3000, () => {
-      console.log(`server is live on port: ${port}...`);
+    app.listen(5000, () => {
+      console.log(`db connected and server is live on port: ${port}...`);
     })
   )
   .catch((err) => console.log(err));
