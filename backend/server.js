@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors=require("cors") // Google it. Access from react app
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleware/errorMiddleware");
 
@@ -19,6 +20,7 @@ mongoose
   .catch((err) => console.log(err));
 
 const app = express();
+app.use(cors())
 app.use(express.json()); //In old version is body-parser.Server can accept json in the body of the req.
 app.use(express.urlencoded({ extended: false }));
 

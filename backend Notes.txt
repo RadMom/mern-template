@@ -1,0 +1,11 @@
+1. npm infinite
+2. npm install express mongoose dotenv
+3. npm install ndemon --devDependencies
+We instal backend dependencies in the main folder, not in the backend folder.
+ "scripts": {
+    "start": "node backend/server.js",
+    "server":"nodemon backend/server.js",
+    "client":"npm start --prefix frontend"
+  }
+  We use npm run client to start frontend(React app);
+  npm run server is for backend 

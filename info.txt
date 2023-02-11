@@ -1,1 +1,0 @@
-We instal backend dependencies in the main folder, not in the backend folder.
