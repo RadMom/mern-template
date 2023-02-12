@@ -65,7 +65,7 @@ const editContact = (req, res) => {
     });
 };
 
-// Delite contact
+// Delete contact
 const deleteContact = (req, res) => {
   console.log(`This contact with id: ${req.params.id}  will be delited`);
   const id = req.params.id;
@@ -73,7 +73,7 @@ const deleteContact = (req, res) => {
     .then((result) => {
       res.status(200).json();
       console.log(
-        `SOMEONE IS HERE Delite contact -- ipaddress: ${req.ip}}`
+        `SOMEONE IS HERE Delete contact -- ipaddress: ${req.ip}}`
       );
     })
     .catch((err) => {

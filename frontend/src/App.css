@@ -19,12 +19,12 @@
  font-size: large;
 }
 
-.home-page .links-home-page{
-  display: flex;
-  justify-content:right;
-  margin: 10px;
-  padding: 10px;
+.home-page h1{
+ text-align: center;
 }
+.home-page button{
+  text-align: center;
+ }
 
 
 @keyframes App-logo-spin {

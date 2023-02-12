@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export const CreateContact = () => {
   //   const handleChange = (event) => {
   //     const name = event.target.name;
@@ -17,7 +18,8 @@ export const CreateContact = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(contact),
-    }).then(console.log(`Contact Created`));
+    }).then(console.log(`Contact Created`))
+  
   };
   //Working!!!
   return (
