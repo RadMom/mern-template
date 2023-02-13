@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-
+//Must add ADD More options btn. CHeck contactModel from backend folder
+//Add search .Must add this in the backend. Use RegEx
+//Change req with axios
+//Make States object -- const {name,phoneNumber}=useState({})
 export const CreateContact = () => {
   //   const handleChange = (event) => {
   //     const name = event.target.name;
@@ -19,6 +22,9 @@ export const CreateContact = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(contact),
     }).then(console.log(`Contact Created`))
+    .catch((err)=>{
+      console.log(err);
+    })
   
   };
   //Working!!!
@@ -45,7 +51,7 @@ export const CreateContact = () => {
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </label>
-        <input type="submit" />
+        <input type="submit" value={"ADD"} />
       </form>
     </>
   );

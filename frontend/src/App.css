@@ -22,9 +22,16 @@
 .home-page h1{
  text-align: center;
 }
-.home-page button{
-  text-align: center;
+.blok-contact-info{
+  display: flex;
+  flex-direction: column;
+}
+.contact-blok  {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
  }
+
 
 
 @keyframes App-logo-spin {

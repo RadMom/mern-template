@@ -1,13 +1,13 @@
 const Contact = require("../models/contactModel");
 
 // Get all contacts
+//Sorted-newest first
 const getContacts = (req, res) => {
   Contact.find()
+    .sort({ createdAt: -1 })
     .then((result) => {
       res.json(result);
-      console.log(
-        `SOMEONE IS HERE Get all contacts -- ipaddress: ${req.ip}}`
-      );
+      console.log(`SOMEONE IS HERE Get all contacts -- ipaddress: ${req.ip}}`);
     })
     .catch((err) => {
       console.log(err);
@@ -22,9 +22,7 @@ const createContact = (req, res) => {
     .save()
     .then((result) => {
       res.json(result);
-      console.log(
-        `SOMEONE IS HERE Create contact -- ipaddress: ${req.ip}}`
-      );
+      console.log(`SOMEONE IS HERE Create contact -- ipaddress: ${req.ip}}`);
     })
     .catch((err) => {
       console.log(err);
@@ -56,9 +54,7 @@ const editContact = (req, res) => {
       console.log(result); //result show old info, we pass the new one with req.body.
       //How to pass only the info I want to change???
       res.status(200).json(result);
-      console.log(
-        `SOMEONE IS HERE Edit contact -- ipaddress: ${req.ip}}`
-      );
+      console.log(`SOMEONE IS HERE Edit contact -- ipaddress: ${req.ip}}`);
     })
     .catch((err) => {
       console.log(err);
@@ -72,9 +68,7 @@ const deleteContact = (req, res) => {
   Contact.findByIdAndDelete(id)
     .then((result) => {
       res.status(200).json();
-      console.log(
-        `SOMEONE IS HERE Delete contact -- ipaddress: ${req.ip}}`
-      );
+      console.log(`SOMEONE IS HERE Delete contact -- ipaddress: ${req.ip}}`);
     })
     .catch((err) => {
       console.log(err);
