@@ -4,7 +4,7 @@ import { useState } from "react";
 //Add search .Must add this in the backend. Use RegEx
 //Change req with axios
 //Make States object -- const {name,phoneNumber}=useState({})
-export const CreateContact = () => {
+export const CreateContact = ({ createContact }) => {
   //   const handleChange = (event) => {
   //     const name = event.target.name;
   //     const value = event.target.value;
@@ -17,15 +17,7 @@ export const CreateContact = () => {
   let handleSubmit = (e) => {
     e.preventDefault();
     const contact = { contact: { name, phoneNumber } };
-    fetch("http://localhost:5000/contacts/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contact),
-    }).then(console.log(`Contact Created`))
-    .catch((err)=>{
-      console.log(err);
-    })
-  
+    createContact(contact);
   };
   //Working!!!
   return (

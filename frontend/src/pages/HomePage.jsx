@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { CreateContact } from "../components/CreateContact";
+import { Dashboard } from "../components/Dashboard";
 export const HomePage = () => {
   //State for data from Get All Contacts
   const [data, setData] = useState([]);
@@ -12,22 +13,31 @@ export const HomePage = () => {
 
   //Get All Contact.
   // add try-catch block
-  //I want to rerender when add contact
-  //Sort newest first. Check backend to do it! DONE!
+  //- DONE!!  I want to rerender when add contact
+  //-DONE!  Sort newest first. Check backend to do it!
   useEffect(() => {
     async function fetchingData() {
       const response = await axios.get("http://localhost:5000/contacts");
-     setData((oldData)=>response.data)
+      setData((oldData) => response.data);
+      return response.data;
     }
-
-    fetchingData()
+    fetchingData();
   }, [reFetch]);
 
   //delete btn function with axios
   //Want the btn to be at  right . Must make it an icon
   const deleteContact = async (id) => {
     const response = await axios.delete("http://localhost:5000/contacts/" + id);
-    console.log(response);
+    setReFetch((oldState) => !oldState);
+    return response;
+  };
+
+  //Create Contact
+  const createContact = async (contact) => {
+    const response = await axios.post(
+      "http://localhost:5000/contacts/",
+      contact
+    );
     setReFetch((oldState) => !oldState);
     return response;
   };
@@ -36,25 +46,13 @@ export const HomePage = () => {
     <div className="home-page">
       <h1>homePage</h1>
       <div className="create-contact">
-        <CreateContact />
+        <CreateContact createContact={createContact} />
       </div>
-
-      {data.map((el) => (
-        <div className="contact-blok" key={el._id}>
-          <div className="blok-contact-info">
-            <hr />
-            <div className="blok-name">Name: {el.contact.name}</div>
-            <div className="blok-phoneNumber">
-              Phone number: {el.contact.phoneNumber}
-            </div>
-          </div>
-          <div className="btn-delete">
-            <button type="submit" onClick={() => deleteContact(el._id)}>
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
+      {data.length > 0 ? (
+        <Dashboard data={data} deleteContact={deleteContact} />
+      ) : (
+        <h2>loading...</h2>
+      )}
     </div>
   );
 };
