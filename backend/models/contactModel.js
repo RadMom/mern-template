@@ -32,4 +32,4 @@ const contactShema = mongoose.Schema(
   }
 );
 
-module.exports=mongoose.model("Contact",contactShema)
+module.exports = mongoose.model("Contact", contactShema);

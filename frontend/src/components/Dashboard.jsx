@@ -15,6 +15,7 @@ export const Dashboard = ({ data, deleteContact }) => {
             <button type="submit" onClick={() => deleteContact(contact._id)}>
               Delete
             </button>
+            {/* <button type="submit" onClick={()=>editContact(contact._id)}>Edit</button> */}
           </div>
         </div>
       ))}
