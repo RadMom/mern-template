@@ -16,8 +16,8 @@ const userSchema = new Schema({
   },
 });
 
-//static signup method. We use signup function in usrController.
-// It can be whateverwe want- userSchema.statics.pepito but we must use the same name in userController.js
+//static signup method. We use signup function in userControllers.
+// It can be whatever we want- userSchema.statics.pepito but we must use the same name in userController.js
 userSchema.statics.signup = async function (email, password) {
   if (!email || !password) {
     throw Error("Please provide email and password");
@@ -41,12 +41,14 @@ userSchema.statics.login = async function (email, password) {
   if (!email || !password) {
     throw Error("Please provide email and password");
   }
+  
+  //Check if user exists
   const user = await this.findOne({ email });
   if (!user) {
     throw Error("User does not exist");
   }
 
-  //Check if the password is correct
+  //Checking if the password is correct
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     throw Error("Incorrect password");

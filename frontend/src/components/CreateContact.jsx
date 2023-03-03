@@ -18,6 +18,8 @@ export const CreateContact = ({ createContact }) => {
     e.preventDefault();
     const contact = { contact: { name, phoneNumber } };
     createContact(contact);
+    setName("")
+    setPhoneNumber("")
   };
   //Working!!!
   return (

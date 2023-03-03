@@ -15,7 +15,11 @@ const app = express();
 
 //middleware
 app.use((req, res, next) => {
-  console.log(`SOMEONE is here : ${(req.method, req.ip)}`);
+  console.log("SOMEONE is here : ");
+  console.log("Method : " + req.method);
+  console.log("URL : " + req.url);
+  console.log("IP : " + req.ip);
+  console.log("--------------------------------");
   next();
 });
 

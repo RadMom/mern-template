@@ -11,20 +11,9 @@ const contactShema = mongoose.Schema(
         type: String,
         required: true,
       },
-      address: {
-        country: {
-          type: String,
-          required: false,
-        },
-        town: {
-          type: String,
-          required: false,
-        },
-        street: {
-          type: String,
-          required: false,
-        },
-      },
+    },
+    user_id: {
+      type: String,
     },
   },
   {

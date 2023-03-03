@@ -9,6 +9,10 @@ const {
   deleteContact,
 } = require("../controllers/contactsController");
 
+const requireAuth=require("../middleware/requireAuth");
+
+router.use(requireAuth);
+
 router.get("/", getContacts);
 router.post("/", createContact);
 router.get("/:id", getContact);

@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
+//createToken function which we will use in login and signup functions.
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
@@ -8,11 +9,10 @@ const createToken = (_id) => {
 //login controller
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
+ 
   try {
     //login is from userSchema.statics.login in userModel.js
     const user = await User.login(email, password);
-
     //create token
     const token = createToken(user._id);
 
@@ -25,11 +25,10 @@ const loginUser = async (req, res) => {
 //singup controller
 const signupUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
+  
   try {
     //signup is from userSchema.statics.signup in userModel.js
     const user = await User.signup(email, password);
-
     //create token
     const token = createToken(user._id);
 

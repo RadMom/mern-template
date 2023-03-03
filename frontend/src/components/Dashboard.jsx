@@ -1,8 +1,9 @@
-export const Dashboard = ({ data, deleteContact }) => {
+export const Dashboard = ( {contacts, deleteContact} ) => {
+  // console.log("kontakta: "+contacts[0].contact.name);
   return (
     <div>
       <h1>Dashboard</h1>
-      {data.map((contact) => (
+      {contacts.map((contact) => (
         <div className="contact-blok" key={contact._id}>
           <div className="blok-contact-info">
             <hr />
