@@ -1,4 +1,8 @@
+
+
 export const Dashboard = ({ contacts, deleteContact }) => {
+
+    
   // console.log("kontakta: "+contacts[0].contact.name);
   return (
     <div className="dashboard">
@@ -12,6 +16,7 @@ export const Dashboard = ({ contacts, deleteContact }) => {
             </div>
           </div>
           <div className="btn-delete">
+            
             <button type="submit" onClick={() => deleteContact(contact._id)}>
               Delete
             </button>

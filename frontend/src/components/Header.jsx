@@ -1,30 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export const Header = () => {
   const { logout } = useLogout();
+  const { user } = useAuthContext();
 
   const handleLogout = () => {
     logout();
   };
+
   return (
-    <div className="header">
-      <h1 style={{ textAlign: "center" }}>PHONEBOOK</h1>
-      <div className="App-header">
+    <header className="header">
+      <h1>PHONEBOOK</h1>
+      <div className="nav">
         <ul>
-          <Link to={"/"}>Home</Link>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/login"}>login</Link>
+          </li>
+          <li>
+            <Link to={"/signup"}>Signup</Link>
+          </li>
         </ul>
-        <ul>
-          <Link to={"/login"}>login</Link>
-        </ul>
-        <ul>
-          <Link to={"/signup"}>Signup</Link>
-        </ul>
+        <div className="logout-btn">
+          {user && <h2>{user.email}</h2>}
+          <button onClick={handleLogout}>Log out</button>
+        </div>
       </div>
-      <span className="logout">
-        <button onClick={handleLogout}>Log out</button>
-      </span>
-    </div>
+    </header>
   );
 };

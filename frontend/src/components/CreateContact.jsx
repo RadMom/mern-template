@@ -23,30 +23,35 @@ export const CreateContact = ({ createContact }) => {
   };
   //Working!!!
   return (
-    <>
+    <div className="create-contact">
+      <h3>Create new contact</h3>
       <form onSubmit={handleSubmit}>
-        <label>
-          Enter name:
-          <input
-            type="text"
-            required
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          Enter phone number:
-          <input
-            type="tel"
-            required
-            name="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-        </label>
+        <div className="name-input">
+          <label>
+            Enter name:
+            <input
+              type="text"
+              required
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="phoneNumber-input">
+          <label>
+            Enter phone number:
+            <input
+              type="tel"
+              required
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </label>
         <input type="submit" value={"ADD"} />
+        </div>
       </form>
-    </>
+    </div>
   );
 };

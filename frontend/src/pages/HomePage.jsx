@@ -19,7 +19,7 @@ export const HomePage = () => {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      console.log(response);
+      console.log("This is response in useEffect : " + response);
 
       if (response.statusText === "OK") {
         dispatch({ type: "SET_CONTACTS", payload: response.data });
@@ -30,14 +30,17 @@ export const HomePage = () => {
     }
   }, [dispatch, user]);
 
+  //Check if contacts are available. JWT expired
+  // Must check if JWT is expired!!!
+
   console.log(contacts);
 
+  //DELETE Contact
   const deleteContact = async (id) => {
-
     if (!user) {
       return;
     }
-    
+
     const response = await axios.delete(
       "http://localhost:5000/api/contacts/" + id,
       {
@@ -72,15 +75,15 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1>homePage</h1>
-      <div className="create-contact">
+      <h1>Home Page</h1>
+      <div className="contacts-data">
+        {contacts ? (
+          <Dashboard contacts={contacts} deleteContact={deleteContact} />
+        ) : (
+          <h1>No Contacts</h1>
+        )}
         <CreateContact createContact={createContact} />
       </div>
-      {contacts ? (
-        <Dashboard contacts={contacts} deleteContact={deleteContact} />
-      ) : (
-        <h1>No Contacts</h1>
-      )}
     </div>
   );
 };
