@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors"); // Google it. Access from react app
 const dotenv = require("dotenv").config();
-const { errorHandler } = require("./middleware/errorMiddleware");
 
 const contactsRoutes = require("./routes/contactsRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -41,5 +40,3 @@ mongoose
     })
   )
   .catch((err) => console.log(err));
-
-app.use(errorHandler);

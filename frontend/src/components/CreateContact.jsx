@@ -18,8 +18,8 @@ export const CreateContact = ({ createContact }) => {
     e.preventDefault();
     const contact = { contact: { name, phoneNumber } };
     createContact(contact);
-    setName("")
-    setPhoneNumber("")
+    setName("");
+    setPhoneNumber("");
   };
   //Working!!!
   return (
@@ -38,7 +38,7 @@ export const CreateContact = ({ createContact }) => {
         <label>
           Enter phone number:
           <input
-            type="text"
+            type="tel"
             required
             name="phoneNumber"
             value={phoneNumber}
